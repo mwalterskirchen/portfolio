@@ -1,65 +1,68 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styled from "styled-components";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <FlexContainer>
+        <div>
+          <Title>
+            Hi, I'm Max! <AnimatedHand>👋</AnimatedHand>
+          </Title>
+          <p>I'm a Full-Stack Engineer from Vienna, Austria 🇦🇹</p>
+          <p>
+            I love building cool things with code using{" "}
+            <Languages>JavaScript</Languages>
+          </p>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      </FlexContainer>
     </div>
-  )
+  );
 }
+
+const FlexContainer = styled.main`
+  display: flex;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  & p {
+    font-size: 2em;
+    margin: 0.5em 0;
+  }
+`;
+
+const Title = styled.h1`
+  font-weight: bold;
+  font-size: 3em;
+`;
+
+const Languages = styled.span`
+  font-weight: bold;
+  border-bottom: 3px var(--primary) solid;
+`;
+
+const AnimatedHand = styled.span`
+  display: inline-block;
+  animation-name: waving;
+  animation-iteration-count: infinite;
+  animation-duration: 500ms;
+
+  @keyframes waving {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(10deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+`;
