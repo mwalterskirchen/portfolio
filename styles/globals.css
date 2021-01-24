@@ -1,6 +1,8 @@
 :root {
   --primary: #EA6D6D;
+  --primary-hover:#de6464; 
   --text: #333333;
+  --bg: #FDFDFD;
 }
 
 
@@ -10,6 +12,7 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: var(--text);
+  background-color: var(--bg);
 }
 
 a {

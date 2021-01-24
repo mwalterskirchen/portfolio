@@ -19,22 +19,91 @@ export default function Home() {
             I love building cool things with code using{" "}
             <Languages>JavaScript</Languages>
           </p>
+          <div>
+            <Link href="https://github.com/mwalterskirchen" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/github.png"
+                alt="Github Profile - Maximilian Walterskirchen"
+              />
+            </Link>
+            <Link href="https://www.linkedin.com/in/maximilian-walterskirchen-10b0881b3/" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/linkedin.png"
+                alt="LinkedIn Profile - Maximilian Walterskirchen"
+              />
+            </Link>
+            <Link href="/resume_walterskirchen.pdf" target="_blank" rel="noopener noreferrer">
+              <img
+                src="/resume.svg"
+                alt="LinkedIn Profile - Maximilian Walterskirchen"
+              />
+            </Link>
+          </div>
+          <Button>
+            <a href="mailto: m.walterskirchen@hotmail.com">Get in Touch</a>
+          </Button>
         </div>
+        <ProfilePicture/>
       </FlexContainer>
     </div>
   );
 }
 
+const ProfilePicture = styled.div`
+  height: 350px;
+  width: 350px;
+  background-image: url("/bewerbungsfoto.jpg");
+  border-radius: 50%;
+  background-position: center;
+  background-size: 350px;
+  background-repeat: no-repeat;
+`
+
+const Link = styled.a`
+  :first-child {
+    margin: 0.5em 0.5em 0.5em 0;
+  }
+  :last-child {
+    margin: 0.5em 0 0.5em 0.5em;
+  }
+  margin: 0.5em;
+  & > img {
+    height: 2.25em;
+  }
+`
+
 const FlexContainer = styled.main`
   display: flex;
   font-size: 1rem;
-  justify-content: center;
+  max-width: 1350px;
+  margin: auto;
+  justify-content: space-between;
   align-items: center;
   height: 100vh;
 
   & p {
     font-size: 2em;
     margin: 0.5em 0;
+  }
+`;
+
+const Button = styled.button`
+  margin-top: 2em;
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-family: inherit;
+  font-size: 1.3em;
+  padding: 0.7em 1.25em;
+  border-radius: 8px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  transition: background 150ms ease;
+  transition: transform 150ms ease-in;
+
+  &:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
   }
 `;
 
@@ -45,14 +114,14 @@ const Title = styled.h1`
 
 const Languages = styled.span`
   font-weight: bold;
-  border-bottom: 3px var(--primary) solid;
+  border-bottom: 5px var(--primary) solid;
 `;
 
 const AnimatedHand = styled.span`
   display: inline-block;
   animation-name: waving;
   animation-iteration-count: infinite;
-  animation-duration: 500ms;
+  animation-duration: 600ms;
 
   @keyframes waving {
     0% {
