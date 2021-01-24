@@ -67,7 +67,7 @@ const Wrapper = styled.div`
 const ProfilePicture = styled.div`
   height: 350px;
   width: 350px;
-  background-image: url("/bewerbungsfoto.jpg");
+  background-image: url("/bewerbungsfoto-min.jpg");
   border-radius: 50%;
   background-position: center;
   background-size: 350px;
