@@ -9,8 +9,8 @@ export default function ScrollIndicator() {
 
 const Line = styled.div`
     background: var(--primary);
-    width: 50%;
-    height: 0.5rem;
+    width: 3%;
+    height: 4px;
     position: fixed;
     top: 0;
     left: 0;

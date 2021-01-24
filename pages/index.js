@@ -1,7 +1,17 @@
 import Head from "next/head";
+import {useEffect} from "react"
 import styled from "styled-components";
+import Typewriter from 'typewriter-effect/dist/core';
 
 export default function Home() {
+  useEffect(()=>{
+    new Typewriter('#languages', {
+      strings: ['JavaScript', 'TypeScript', 'React', 'Node', 'CSS','HTML', 'Python', 'SQL', 'NoSQL', 'Swift', 'Java'],
+      autoStart: true,
+      loop: true
+    });
+  }, [])
+
   return (
     <div>
       <Head>
@@ -10,16 +20,17 @@ export default function Home() {
       </Head>
 
       <FlexContainer>
-        <div>
+        <Wrapper>
           <Title>
             Hi, I'm Max! <AnimatedHand>👋</AnimatedHand>
           </Title>
           <p>I'm a Full-Stack Engineer from Vienna, Austria 🇦🇹</p>
           <p>
             I love building cool things with code using{" "}
-            <Languages>JavaScript</Languages>
+            <Languages id="languages">JavaScript</Languages>
+            .
           </p>
-          <div>
+          <LinkRow>
             <Link href="https://github.com/mwalterskirchen" target="_blank" rel="noopener noreferrer">
               <img
                 src="/github.png"
@@ -38,16 +49,20 @@ export default function Home() {
                 alt="LinkedIn Profile - Maximilian Walterskirchen"
               />
             </Link>
-          </div>
+          </LinkRow>
           <Button>
             <a href="mailto: m.walterskirchen@hotmail.com">Get in Touch</a>
           </Button>
-        </div>
+        </Wrapper>
         <ProfilePicture/>
       </FlexContainer>
     </div>
   );
 }
+
+const Wrapper = styled.div`
+  flex-basis: 780px;
+`
 
 const ProfilePicture = styled.div`
   height: 350px;
@@ -57,6 +72,16 @@ const ProfilePicture = styled.div`
   background-position: center;
   background-size: 350px;
   background-repeat: no-repeat;
+
+  @media (max-width: 1060px) {
+    height: 200px;
+    width: 200px;
+    background-size: 200px;
+  }
+`
+
+const LinkRow = styled.div`
+  margin-top: 1em;
 `
 
 const Link = styled.a`
@@ -77,13 +102,21 @@ const FlexContainer = styled.main`
   font-size: 1rem;
   max-width: 1350px;
   margin: auto;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100vh;
+  padding: 15px;
 
   & p {
     font-size: 2em;
-    margin: 0.5em 0;
+    margin: 0.1em 0;
+  }
+
+  @media (max-width: 1060px) {
+    height: auto;
+    margin-top: 30px;
+    flex-direction: column-reverse;
+    font-size: 0.85rem;
   }
 `;
 
@@ -93,8 +126,8 @@ const Button = styled.button`
   background: var(--primary);
   color: white;
   font-family: inherit;
-  font-size: 1.3em;
-  padding: 0.7em 1.25em;
+  font-size: 1.2em;
+  padding: 0.8em 1.5em;
   border-radius: 8px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   cursor: pointer;
@@ -110,6 +143,10 @@ const Button = styled.button`
 const Title = styled.h1`
   font-weight: bold;
   font-size: 3em;
+
+  @media (max-width: 1060px) {
+    margin: 0.2em 0;
+  }
 `;
 
 const Languages = styled.span`
