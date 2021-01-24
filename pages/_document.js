@@ -18,6 +18,8 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>Maximilian Walterskirchen - Full-Stack Developer</title>
+          <link rel="icon" href="/favicon.ico" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
@@ -25,7 +27,7 @@ export default class MyDocument extends Document {
           />
           {this.props.styleTags}
         </Head>
-        <body>
+        <body data-theme="light">
           <Main />
           <NextScript />
         </body>

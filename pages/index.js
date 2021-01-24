@@ -1,7 +1,7 @@
-import Head from "next/head";
 import {useEffect} from "react"
 import styled from "styled-components";
 import Typewriter from 'typewriter-effect/dist/core';
+import Slider from "../components/Slider";
 
 export default function Home() {
   useEffect(()=>{
@@ -14,17 +14,13 @@ export default function Home() {
 
   return (
     <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      <Slider/>
       <FlexContainer>
         <Wrapper>
           <Title>
             Hi, I'm Max! <AnimatedHand>👋</AnimatedHand>
           </Title>
-          <p>I'm a Full-Stack Engineer from Vienna, Austria 🇦🇹</p>
+          <p>I'm a Full-Stack Developer from Vienna, Austria 🇦🇹</p>
           <p>
             I love building cool things with code using{" "}
             <Languages id="languages">JavaScript</Languages>

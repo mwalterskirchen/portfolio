@@ -5,6 +5,11 @@
   --bg: #FDFDFD;
 }
 
+/*Dark mode variables*/
+[data-theme="dark"] {
+  --bg: #212121;
+  --text: #FDFDFD;
+}
 
 html,
 body {
@@ -13,6 +18,9 @@ body {
   font-family: 'Roboto', sans-serif;
   color: var(--text);
   background-color: var(--bg);
+
+  transition: background ease 500ms;
+  transition: color ease 500ms;
 }
 
 a {
