@@ -1,20 +1,16 @@
-import {useEffect} from "react"
 import styled from "styled-components";
-import Typewriter from 'typewriter-effect/dist/core';
+import LinkRow from "../components/LinkRow";
 import Slider from "../components/Slider";
+import useTypewriter from "../hooks/useTypewriter";
+import Button from "../components/Button"
 
 export default function Home() {
-  useEffect(()=>{
-    new Typewriter('#languages', {
-      strings: ['JavaScript', 'TypeScript', 'React', 'Node', 'CSS','HTML', 'Python', 'SQL', 'NoSQL', 'Swift', 'Java'],
-      autoStart: true,
-      loop: true
-    });
-  }, [])
+  //typewriter effect for langs
+  useTypewriter()
 
   return (
     <div>
-      <Slider/>
+      <Slider />
       <FlexContainer>
         <Wrapper>
           <Title>
@@ -23,34 +19,14 @@ export default function Home() {
           <p>I'm a Full-Stack Developer from Vienna, Austria 🇦🇹</p>
           <p>
             I love building cool things with code using{" "}
-            <Languages id="languages">JavaScript</Languages>
-            .
+            <Languages id="languages">JavaScript</Languages>.
           </p>
-          <LinkRow>
-            <Link href="https://github.com/mwalterskirchen" target="_blank" rel="noopener noreferrer">
-              <img
-                src="/github.png"
-                alt="Github Profile - Maximilian Walterskirchen"
-              />
-            </Link>
-            <Link href="https://www.linkedin.com/in/maximilian-walterskirchen-10b0881b3/" target="_blank" rel="noopener noreferrer">
-              <img
-                src="/linkedin.png"
-                alt="LinkedIn Profile - Maximilian Walterskirchen"
-              />
-            </Link>
-            <Link href="/resume_walterskirchen.pdf" target="_blank" rel="noopener noreferrer">
-              <img
-                src="/resume.svg"
-                alt="LinkedIn Profile - Maximilian Walterskirchen"
-              />
-            </Link>
-          </LinkRow>
+          <LinkRow/>
           <Button>
             <a href="mailto: m.walterskirchen@hotmail.com">Get in Touch</a>
           </Button>
         </Wrapper>
-        <ProfilePicture/>
+        <ProfilePicture />
       </FlexContainer>
     </div>
   );
@@ -58,7 +34,12 @@ export default function Home() {
 
 const Wrapper = styled.div`
   flex-basis: 780px;
-`
+
+  @media (max-width: 1060px) {
+    flex-basis: auto;
+    margin-top: 30px;
+  }
+`;
 
 const ProfilePicture = styled.div`
   height: 350px;
@@ -74,24 +55,7 @@ const ProfilePicture = styled.div`
     width: 200px;
     background-size: 200px;
   }
-`
-
-const LinkRow = styled.div`
-  margin-top: 1em;
-`
-
-const Link = styled.a`
-  :first-child {
-    margin: 0.5em 0.5em 0.5em 0;
-  }
-  :last-child {
-    margin: 0.5em 0 0.5em 0.5em;
-  }
-  margin: 0.5em;
-  & > img {
-    height: 2.25em;
-  }
-`
+`;
 
 const FlexContainer = styled.main`
   display: flex;
@@ -113,26 +77,6 @@ const FlexContainer = styled.main`
     margin-top: 30px;
     flex-direction: column-reverse;
     font-size: 0.85rem;
-  }
-`;
-
-const Button = styled.button`
-  margin-top: 2em;
-  border: none;
-  background: var(--primary);
-  color: white;
-  font-family: inherit;
-  font-size: 1.2em;
-  padding: 0.8em 1.5em;
-  border-radius: 8px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  cursor: pointer;
-  transition: background 150ms ease;
-  transition: transform 150ms ease-in;
-
-  &:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
   }
 `;
 

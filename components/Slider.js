@@ -1,15 +1,15 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 
 export default function Slider() {
-    const input = useRef(null)
+  const input = useRef(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const theme = window.localStorage.getItem("theme");
 
     if (theme) {
       document.body.setAttribute("data-theme", theme);
-      input.current.checked = theme === "dark" ? true : false
+      input.current.checked = theme === "dark" ? true : false;
     }
   }, []);
 
@@ -26,42 +26,69 @@ export default function Slider() {
     window.localStorage.setItem("theme", newTheme);
   };
 
-  return <Input type="checkbox" ref={input} onChange={handleChange} />;
+  return (
+    <Wrapper>
+    <Label>
+      <input type="checkbox" ref={input} onChange={handleChange} />
+      <span />
+    </Label>
+    <span>Dark Mode</span>
+    </Wrapper>
+  );
 }
 
-const Input = styled.input`
-  -webkit-appearance: none;
-  position: relative;
-  width: 75px;
-  height: 37.5px;
-  background-image: url("https://i.postimg.cc/857jHw2q/Screenshot-2020-04-16-at-1-07-06-PM.png");
-  background-size: cover;
-  border-radius: 37.5px;
-  outline: none;
-  transition: background-image 0.5s;
-  box-shadow: 0px 2px 5px 1px gray;
+const Wrapper = styled.div`
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+`
 
-  &:before {
-    content: "";
+const Label = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  margin: 5px 0;
+  height: 34px;
+
+  & input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  & input:checked + span {
+    background-color: var(--primary);
+  }
+
+  & input:focus + span {
+    box-shadow: 0 0 1px var(--primary);
+  }
+
+  & input:checked + span:before {
+    transform: translateX(26px);
+  }
+
+  & span {
     position: absolute;
+    cursor: pointer;
     top: 0;
     left: 0;
-    height: 37.5px;
-    width: 37.5px;
-    background-color: navy;
-    border-radius: 37.5px;
-    transition: all 0.5s;
-    background-color: #f7ca33;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
   }
 
-  &:checked {
-    background-image: url("https://i.postimg.cc/Hn0nstVK/Screenshot-2020-04-16-at-1-07-19-PM.png");
-    transition: background-image 0.5s;
-  }
-
-  &:checked:before {
-    transform: translate(100%);
-    transition: all 0.5s;
-    background-color: #ecf0f3;
+  & span:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
   }
 `;
