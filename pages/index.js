@@ -2,16 +2,25 @@ import styled from "styled-components";
 import LinkRow from "../components/LinkRow";
 import Slider from "../components/Slider";
 import useTypewriter from "../hooks/useTypewriter";
-import Button from "../components/Button"
-import Image from "next/image"
+import Button from "../components/Button";
+import Image from "next/image";
+import Link from "next/link";
+import NavBar from "../components/NavBar";
 
 export default function Home() {
   //typewriter effect for langs
-  useTypewriter()
+  useTypewriter();
 
   return (
     <div>
-      <Slider />
+      <NavBar>
+        <Slider />
+        <div>
+          <Link href="/about">About Me</Link>
+          <Link href="/work">Portfolio</Link>
+          <Link href="/work">Blog</Link>
+        </div>
+      </NavBar>
       <FlexContainer>
         <Wrapper>
           <Title>
@@ -22,13 +31,18 @@ export default function Home() {
             I love building cool things with code using{" "}
             <Languages id="languages">JavaScript</Languages>.
           </p>
-          <LinkRow/>
+          <LinkRow />
           <Button>
             <a href="mailto: m.walterskirchen@hotmail.com">Get in Touch</a>
           </Button>
         </Wrapper>
         <ProfilePicture>
-          <Image src={"/bewerbungsfoto-min.jpg"} height={350} width={350}/>
+          <Image
+            src={"/bewerbungsfoto-min.jpg"}
+            height={350}
+            width={350}
+            alt="Maximilian Walterskirchen Foto"
+          />
         </ProfilePicture>
       </FlexContainer>
     </div>
